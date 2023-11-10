@@ -1,4 +1,4 @@
-const db = require("../../config/dbPostgreSQL");
+const db = require("../../config/db");
 
 const getCommentById = async (recipe_id) => {
   return new Promise((resolve, reject) => {

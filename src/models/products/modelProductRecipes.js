@@ -1,4 +1,4 @@
-const db = require("../../config/dbPostgresql");
+const db = require("../../config/db");
 
 const modelProductRecipes= {
   allRecipe: () => {
