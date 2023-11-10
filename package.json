@@ -24,6 +24,5 @@
     "nodemon": "^3.0.1",
     "pg": "^8.11.3",
     "xss-clean": "^0.1.4"
-  },
-  "devDependencies": {}
+  }
 }

@@ -1,17 +1,24 @@
 /* eslint-disable no-undef */
-require("dotenv").config();
-const pg = require("pg");
+require('dotenv').config();
+const { Pool } = require('pg');
 
-const db = new pg.Pool({
-  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
-})
-
-// Mencoba melakukan koneksi ke database
-db.connect((err) => {
-  if (err) {
-    console.log(err);
-  }
-  console.log("Terhubung ke database!");
+const db = new Pool({
+  connectionString: process.env.POSTGRES_URL + '?sslmode=require',
 });
+
+// Tangani error pada koneksi pool
+db.on('error', (err) => {
+  console.error('Database pool error:', err.message);
+});
+
+// Coba melakukan koneksi ke database menggunakan async/await
+(async () => {
+  try {
+    await db.connect();
+    console.log('Terhubung ke database!');
+  } catch (err) {
+    console.error('Koneksi ke database gagal:', err.message);
+  }
+})();
 
 module.exports = db;

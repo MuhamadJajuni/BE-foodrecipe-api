@@ -9,6 +9,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+console.log("terhubung ke cloudinary");
+
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
