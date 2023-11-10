@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const path = require("path");
 const xss = require("xss-clean");
 
-const router = require("./src/router");
+const router = require("./src/router/routes");
 const app = express();
 
 
