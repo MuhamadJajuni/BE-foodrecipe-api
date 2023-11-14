@@ -92,11 +92,11 @@ const modelProductRecipes= {
     return db.query("SELECT COUNT(*) FROM recipe");
   },
 
-  createRecipe: ({ title, ingredients, image, category_id, users_id }) => {
+  createRecipe: ({ title, ingredients, videoLink, image, category_id, users_id }) => {
     return new Promise((resolve, reject) => {
       db.query(
-        `INSERT INTO recipe (title, ingredients, image, category_id, users_id) VALUES ($1, $2, $3, $4, $5)`,
-        [title, ingredients, image, category_id, users_id],
+        `INSERT INTO recipe (title, ingredients, videoLink, image, category_id, users_id) VALUES ($1, $2, $3, $4, $5, $6)`,
+        [title, ingredients, videoLink, image, category_id, users_id],
         (err, result) => {
           if (err) {
             reject(err);
@@ -120,10 +120,10 @@ const modelProductRecipes= {
     });
   },
 
-  update: async ({ id, title, ingredients, image, category_id }) => {
+  update: async ({ id, title, ingredients, videoLink, image, category_id }) => {
     const query =
-      "UPDATE recipe SET title = $1, ingredients = $2, image = $3, category_id = $4 WHERE id = $5 RETURNING *";
-    const values = [title, ingredients, image, category_id, id];
+      "UPDATE recipe SET title = $1, ingredients = $2, videoLink = $3, image = $4, category_id = $5 WHERE id = $6 RETURNING *";
+    const values = [title, ingredients, videoLink, image, category_id, id];
 
     try {
       const result = await db.query(query, values);

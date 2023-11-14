@@ -122,7 +122,7 @@ const productRecipes = {
 
   // Menambahkan data resep
   postRecipe: async (req, res) => {
-    const { title, ingredients, category_id } = req.body;
+    const { title, ingredients, videoLink, category_id } = req.body;
     const users_id = req.payload.id;
 
     try {
@@ -131,6 +131,7 @@ const productRecipes = {
       await modelRecipesCategory.createRecipe({
         title,
         ingredients,
+        videoLink,
         image: imageUrl,
         category_id,
         users_id,
@@ -141,6 +142,7 @@ const productRecipes = {
         data: {
           title,
           ingredients,
+          videoLink,
           image: imageUrl,
           category_id,
           users_id,
@@ -187,7 +189,7 @@ const productRecipes = {
     // Mengubah data resep
 updateRecipe: async (req, res) => {
   const { id } = req.params;
-  const { title, ingredients, category_id } = req.body;
+  const { title, ingredients, videoLink, category_id } = req.body;
   let image;
 
   try {
@@ -219,6 +221,7 @@ updateRecipe: async (req, res) => {
       id,
       title,
       ingredients,
+      videoLink,
       image,
       category_id,
     });
@@ -228,6 +231,7 @@ updateRecipe: async (req, res) => {
       data: {
         title,
         ingredients,
+        videoLink,
         image,
         category_id,
       },
