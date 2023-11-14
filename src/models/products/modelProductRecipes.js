@@ -4,7 +4,7 @@ const modelProductRecipes= {
   allRecipe: () => {
     return new Promise((resolve, reject) => {
       db.query(
-        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.image, category.name AS category, users.name AS author FROM recipe JOIN category ON recipe.category_id = category.id JOIN users ON users_id = users.id`,
+        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.videoLink, recipe.image, category.name AS category, users.name AS author FROM recipe JOIN category ON recipe.category_id = category.id JOIN users ON users_id = users.id`,
         (err, result) => {
           if (err) {
             reject(err);
@@ -51,7 +51,7 @@ const modelProductRecipes= {
   getDetail: async (id) => {
     return new Promise((resolve, reject) => {
       db.query(
-        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.image,recipe.create_at, category.name AS category, users.name AS author 
+        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.videoLink, recipe.image,recipe.create_at, category.name AS category, users.name AS author 
         FROM recipe 
         JOIN category ON recipe.category_id = category.id 
         JOIN users ON recipe.users_id = users.id
