@@ -4,7 +4,7 @@ const modelProductRecipes= {
   allRecipe: () => {
     return new Promise((resolve, reject) => {
       db.query(
-        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.videoLink, recipe.image, category.name AS category, users.name AS author FROM recipe JOIN category ON recipe.category_id = category.id JOIN users ON users_id = users.id`,
+        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.videolink, recipe.image, category.name AS category, users.name AS author FROM recipe JOIN category ON recipe.category_id = category.id JOIN users ON users_id = users.id`,
         (err, result) => {
           if (err) {
             reject(err);
@@ -36,7 +36,7 @@ const modelProductRecipes= {
     const { search, searchBy, offset, limit, id, sort } = data;
     return new Promise((resolve, reject) =>
       db.query(
-        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.image, category.name AS category FROM recipe JOIN category ON recipe.category_id = category.id WHERE users_id = ${id} AND ${searchBy} ILIKE '%${search}%' ORDER BY title ${sort} OFFSET ${offset} LIMIT ${limit}`,
+        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.videolink, recipe.image, category.name AS category FROM recipe JOIN category ON recipe.category_id = category.id WHERE users_id = ${id} AND ${searchBy} ILIKE '%${search}%' ORDER BY title ${sort} OFFSET ${offset} LIMIT ${limit}`,
         (err, result) => {
           if (!err) {
             resolve(result);
@@ -51,7 +51,7 @@ const modelProductRecipes= {
   getDetail: async (id) => {
     return new Promise((resolve, reject) => {
       db.query(
-        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.videoLink, recipe.image,recipe.create_at, category.name AS category, users.name AS author 
+        `SELECT recipe.id, recipe.title, recipe.ingredients, recipe.videolink, recipe.image,recipe.create_at, category.name AS category, users.name AS author 
         FROM recipe 
         JOIN category ON recipe.category_id = category.id 
         JOIN users ON recipe.users_id = users.id
@@ -92,11 +92,11 @@ const modelProductRecipes= {
     return db.query("SELECT COUNT(*) FROM recipe");
   },
 
-  createRecipe: ({ title, ingredients, videoLink, image, category_id, users_id }) => {
+  createRecipe: ({ title, ingredients, videolink, image, category_id, users_id }) => {
     return new Promise((resolve, reject) => {
       db.query(
-        `INSERT INTO recipe (title, ingredients, videoLink, image, category_id, users_id) VALUES ($1, $2, $3, $4, $5, $6)`,
-        [title, ingredients, videoLink, image, category_id, users_id],
+        `INSERT INTO recipe (title, ingredients, videolink, image, category_id, users_id) VALUES ($1, $2, $3, $4, $5, $6)`,
+        [title, ingredients, videolink, image, category_id, users_id],
         (err, result) => {
           if (err) {
             reject(err);
@@ -120,10 +120,10 @@ const modelProductRecipes= {
     });
   },
 
-  update: async ({ id, title, ingredients, videoLink, image, category_id }) => {
+  update: async ({ id, title, ingredients, videolink, image, category_id }) => {
     const query =
       "UPDATE recipe SET title = $1, ingredients = $2, videoLink = $3, image = $4, category_id = $5 WHERE id = $6 RETURNING *";
-    const values = [title, ingredients, videoLink, image, category_id, id];
+    const values = [title, ingredients, videolink, image, category_id, id];
 
     try {
       const result = await db.query(query, values);
