@@ -109,14 +109,14 @@ CLOUDINARY_API_SECRET
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/NewFeatures`)
-3. Commit your Changes (`git commit -m 'Add some NewFeatures'`)
-4. Push to the Branch (`git push origin feature/NewFeatures`)
+2. Create your Feature Branch (`git checkout -b feature/NewFeature`)
+3. Commit your Changes (`git commit -m 'Add some NewFeature'`)
+4. Push to the Branch (`git push origin feature/NewFeature`)
 5. Open a Pull Request
 
 ## Endpoint List
 
-[![Run in Postman](https://run.pstmn.io/button.svg)]
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/29036634/2s9Ye8gahW)
 
 
 ## Related Project
