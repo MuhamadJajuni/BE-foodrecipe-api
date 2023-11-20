@@ -2,9 +2,9 @@
 require('dotenv').config();
 const { Pool } = require('pg');
 
-const db = new Pool({
-  connectionString: process.env.POSTGRES_URL + '?sslmode=require',
-});
+// const db = new Pool({
+//   connectionString: process.env.POSTGRES_URL + '?sslmode=require',
+// });
 
 // Tangani error pada koneksi pool
 db.on('error', (err) => {
