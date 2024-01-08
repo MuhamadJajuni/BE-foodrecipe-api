@@ -9,7 +9,6 @@ const xss = require("xss-clean");
 const router = require("./src/router/index");
 const app = express();
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan("combined"));

@@ -24,7 +24,6 @@ const { getDataById, postData } = productComment;
 const router = express.Router();
 
 //AUTH
-
 router.post("/register", register);
 router.post("/login", login);
 
@@ -41,12 +40,7 @@ router.post("/postUsers", postUser);
 router.get("/category", getData);
 
 //CRUD RECIPES
-router.put(
-  "/updateRecipe/:id",
-  AuthJWT,
-  uploadFile("image"),
-  updateRecipe
-);
+router.put("/updateRecipe/:id", AuthJWT, uploadFile("image"), updateRecipe);
 router.get("/recipe/:id", AuthJWT, getById);
 router.post("/postRecipe", uploadFile("image"), AuthJWT, postRecipe);
 router.get("/recipes", AuthJWT, getRecipes);

@@ -79,7 +79,7 @@ const productRecipes = {
       }
 
       res.status(200).json({
-        message: "Get recipes sucessfully",
+        message: "Get My recipes Berhasil",
         data: dataRecipe.rows,
         pagination,
       });
